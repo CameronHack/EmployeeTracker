@@ -190,7 +190,37 @@ try {
     }
 
     if (answers.menuChoice === 'Update an employee role') {
+        async function updateEmployeeRole() {
+            try {
+                let updateRole = await inquirer
+                .prompt([
+                    {
+                        type: 'input',
+                        name: 'employee_id',
+                        message: 'Enter the Employee ID of the person whose Role you want to update:',
+                    },
+                    {
+                        type: 'input',
+                        name: 'role_id',
+                        message: 'Enter the new Role ID for this employee:',
+                    }
+                ])
 
+                db.query(`UPDATE employee SET role_id = ? WHERE id = ?;`, [updateRole.role_id, updateRole.employee_id], function (err, data) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log(`Employee role has been updated.`);
+                    }
+                })
+
+            }
+            catch (err) {
+                console.log(err)
+            }
+        }
+
+        updateEmployeeRole()
     }
 
 } catch (err) {
