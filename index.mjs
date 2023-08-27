@@ -29,20 +29,20 @@ try {
     ])
     
     if (answers.menuChoice === 'View all departments') {
-        db.query('SELECT * FROM department', function (err, results) {
-            console.log(results);
+        db.query(`SELECT name, id FROM department;`, function (err, results) {
+            console.table(results);
         });
     }
 
     if (answers.menuChoice === 'View all roles') {
-        db.query('SELECT * FROM role', function (err, results) {
-            console.log(results);
+        db.query(`SELECT title as JobTitle, role.id as RoleID, department.name as DepartmentName, salary FROM role INNER JOIN department ON role.department_id = department.id;`, function (err, results) {
+            console.table(results);
         });
     }
 
     if (answers.menuChoice === 'View all employees') {
-        db.query('SELECT * FROM employee', function (err, results) {
-            console.log(results);
+        db.query(`SELECT employee.id AS EmployeeID, employee.first_name, employee.last_name, role.title AS JobTitle, department.name AS Department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS Manager FROM employee INNER JOIN role ON employee.role_id = role.id INNER JOIN department ON role.department_id = department.id LEFT JOIN employee AS manager ON employee.manager_id = manager.id;`, function (err, results) {
+            console.table(results);
         });
     }
 
