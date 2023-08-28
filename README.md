@@ -1,6 +1,6 @@
 # Employee Tracker
 
-Link to video
+[Link to video](https://drive.google.com/file/d/1LWm84Sej0tPDMqpcaXseRTv1LGMdFETR/view)
 
 ## Description
 
@@ -20,6 +20,8 @@ Open your cli and type "npm i"
 ## Usage
 
 After installing in your cli type "node index.mjs" to run the program. Follow the on-screen instructions to use.
+
+![employeetracker](https://github.com/CameronHack/EmployeeTracker/assets/139071966/eaa69846-b159-4906-83b4-ec47fc95fc03)
 
 ## License
 
